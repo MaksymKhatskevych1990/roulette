@@ -1,0 +1,133 @@
+:root {
+    --bg-color: #1c1c1e;
+    --ticket-bg: #2c2c2e;
+    --highlight-color: #007aff;
+    --text-color: #ffffff;
+    --ticket-width: 90px;
+    --ticket-height: 80px;
+    --gap: 10px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.roulette-container {
+    position: relative;
+    width: 320px;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    /* Mask to fade out top and bottom */
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.roulette-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+    will-change: transform;
+    width: var(--ticket-width);
+}
+
+.ticket {
+    width: var(--ticket-width);
+    height: var(--ticket-height);
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+.ticket-amount {
+    font-size: 20px;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ticket-label {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-top: 2px;
+}
+
+/* Different colors for variety */
+.ticket:nth-child(3n+1) {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.ticket:nth-child(3n+2) {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.ticket:nth-child(3n+3) {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+/* Center indicator line */
+.indicator-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.spin-btn {
+    margin-top: 30px;
+    padding: 16px 40px;
+    background: #007aff;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.spin-btn:active {
+    transform: scale(0.95);
+}
+
+.spin-btn:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+#result-message {
+    margin-top: 15px;
+    height: 24px;
+    font-size: 16px;
+    color: #888;
+}
